@@ -1,9 +1,9 @@
 ext {
     android = [
-            compileSdkVersion: 29,
+            compileSdkVersion: 30,
             applicationId    : "com.chenxuan.kotlin.mvvm",
             minSdkVersion    : 21,
-            targetSdkVersion : 29,
+            targetSdkVersion : 30,
             versionCode      : 1,
             versionName      : "1.0.0",
     ]
@@ -11,11 +11,11 @@ ext {
     versions = [
             kotlin              : '1.4.10',
             androidx_core       : '1.3.1',
-            appcompat           : '1.1.0',
+            appcompat           : '1.2.0',
             lifecycle           : '2.2.0',
             work_manager        : '2.4.0',
             constraintlayout    : '1.1.3',
-            recyclerview         : '1.1.0',
+            recyclerview        : '1.1.0',
             material            : '1.3.0-alpha02',
             retrofit            : '2.9.0',
             converter_gson      : '2.9.0',
@@ -48,7 +48,7 @@ ext {
             work_manager         : "androidx.work:work-runtime:$versions.work_manager",
             work_manager_ktx     : "androidx.work:work-runtime-ktx:$versions.work_manager",
             constraintlayout     : "androidx.constraintlayout:constraintlayout:$versions.constraintlayout",
-            recyclerview          : "androidx.recyclerview:recyclerview:$versions.recyclerview",
+            recyclerview         : "androidx.recyclerview:recyclerview:$versions.recyclerview",
             material             : "com.google.android.material:material:$versions.material",
             retrofit             : "com.squareup.retrofit2:retrofit:$versions.retrofit",
             converter_gson       : "com.squareup.retrofit2:converter-gson:$versions.converter_gson",
