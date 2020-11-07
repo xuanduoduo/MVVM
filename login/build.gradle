@@ -1,0 +1,58 @@
+if (isLoginModule.toBoolean()) {
+    apply plugin: 'com.android.library'
+} else {
+    apply plugin: 'com.android.application'
+}
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+def root_android = rootProject.ext.android
+def root_dependencies = rootProject.ext.dependencies
+
+android {
+    resourcePrefix "login_"
+    compileSdkVersion root_android.compileSdkVersion
+    defaultConfig {
+        minSdkVersion root_android.minSdkVersion
+        targetSdkVersion root_android.targetSdkVersion
+        versionCode root_android.versionCode
+        versionName root_android.versionName
+
+        if (!isLoginModule.toBoolean()) {
+            //单独调试时添加applicationId集成调试时移除
+            applicationId "com.chenxuan.kotlin.login"
+        }
+    }
+
+    sourceSets {
+        main {
+            // 单独调试与集成调试时使用不同的 AndroidManifest.xml 文件
+            if (isLoginModule.toBoolean()) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':net')
+    implementation project(path: ':widget')
+    kapt root_dependencies.arouter_compiler
+}

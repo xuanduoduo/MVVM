@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomToolbar">
+        <attr name="barContent" format="string" />
+        <attr name="barContentColor" format="color" />
+        <attr name="featureText" format="string" />
+        <attr name="featureTextColor" format="color" />
+        <attr name="barIcon" format="boolean" />
+        <attr name="barSeparate" format="boolean" />
+    </declare-styleable>
+</resources>
