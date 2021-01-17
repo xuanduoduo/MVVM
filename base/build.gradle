@@ -39,6 +39,9 @@ dependencies {
     api root_dependencies.lifecycle
     api root_dependencies.work_manager
     api root_dependencies.work_manager_ktx
+    api root_dependencies.room
+    api root_dependencies.room_compiler
+    api root_dependencies.room_ktx
     api root_dependencies.constraintlayout
     api root_dependencies.recyclerview
     api root_dependencies.material
