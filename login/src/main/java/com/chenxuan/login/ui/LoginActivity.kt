@@ -1,7 +1,6 @@
 package com.chenxuan.login.ui
 
 import android.os.Bundle
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.chenxuan.common.base.BaseActivity
@@ -10,6 +9,7 @@ import com.chenxuan.common.utils.router.RouterPath
 import com.chenxuan.login.R
 import com.chenxuan.login.repository.LoginRepository
 import com.chenxuan.login.viewmodel.LoginViewModel
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.login_activity_login.*
 
 /**
@@ -25,9 +25,9 @@ class LoginActivity : BaseActivity<LoginRepository, LoginViewModel>() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        viewModel.contentLiveData.observe(this, Observer<String> { content ->
-            tvLogin.text = content
-        })
+        viewModel.contentLiveData.observe(this) { content ->
+            tvLogin.text = Gson().toJson(content)
+        }
 
         tvLogin.setSingleClick {
             viewModel.getChapters()

@@ -26,4 +26,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation root_dependencies.kotlin
+    implementation root_dependencies.work_manager
+    implementation root_dependencies.work_manager_ktx
 }

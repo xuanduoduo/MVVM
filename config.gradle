@@ -36,7 +36,7 @@ ext {
             eventbus            : '3.1.1',
             leakcanary          : '2.4',
             multidex            : '1.0.3',
-            zxing               : '2.1.6'
+            zxing               : '2.1.6',
     ]
 
     dependencies = [
@@ -86,6 +86,6 @@ ext {
             //65536分包
             multidex             : "com.android.support:multidex:$versions.multidex",
             //https://github.com/mylhyl/Android-Zxing
-            zxing                : "com.mylhyl:zxingscanner:$versions.zxing"
+            zxing                : "com.mylhyl:zxingscanner:$versions.zxing",
     ]
 }

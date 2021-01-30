@@ -1,7 +1,9 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+}
 
 def root_android = rootProject.ext.android
 def root_dependencies = rootProject.ext.dependencies
@@ -15,7 +17,6 @@ android {
         versionCode root_android.versionCode
         versionName root_android.versionName
         multiDexEnabled true
-
     }
     buildTypes {
         release {

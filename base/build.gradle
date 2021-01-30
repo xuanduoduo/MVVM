@@ -1,6 +1,8 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
 
 def root_android = rootProject.ext.android
 def root_dependencies = rootProject.ext.dependencies
@@ -17,7 +19,6 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
@@ -37,11 +38,6 @@ dependencies {
     api root_dependencies.viewmodel
     api root_dependencies.livedata
     api root_dependencies.lifecycle
-    api root_dependencies.work_manager
-    api root_dependencies.work_manager_ktx
-    api root_dependencies.room
-    api root_dependencies.room_compiler
-    api root_dependencies.room_ktx
     api root_dependencies.constraintlayout
     api root_dependencies.recyclerview
     api root_dependencies.material

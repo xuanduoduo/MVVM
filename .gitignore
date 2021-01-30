@@ -13,3 +13,5 @@ common/build/
 login/build/
 net/build/
 widget/build/
+room/build/
+work/build/
