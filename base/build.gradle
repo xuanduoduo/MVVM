@@ -61,4 +61,6 @@ dependencies {
     debugApi root_dependencies.leakcanary
     api root_dependencies.multidex
     api root_dependencies.zxing
+    debugApi root_dependencies.dokitx
+    releaseApi root_dependencies.dokitx_release
 }

@@ -2,7 +2,7 @@
 apply from: "config.gradle"
 
 buildscript {
-    def kotlin_version = '1.4.21'
+    def kotlin_version = '1.4.30'
 
     repositories {
         google()

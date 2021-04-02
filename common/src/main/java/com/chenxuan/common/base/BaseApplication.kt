@@ -3,6 +3,7 @@ package com.chenxuan.common.base
 import androidx.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
 import com.chenxuan.common.BuildConfig
+import com.didichuxing.doraemonkit.DoraemonKit
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 
@@ -17,6 +18,8 @@ open class BaseApplication : MultiDexApplication() {
         Logger.addLogAdapter(AndroidLogAdapter())
         //初始化router
         initARouter()
+        //初始化dokit
+        DoraemonKit.install(this)
     }
 
     private fun initARouter() {
