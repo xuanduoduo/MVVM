@@ -3,8 +3,7 @@ package com.chenxuan.gradle
 import java.io.File
 
 fun File.filterTest(nameReg: String): Array<File>? {
-    val list = listFiles { file -> file?.name == nameReg }
-    return list
+    return listFiles { file -> file?.name == nameReg }
 }
 
 fun File.deleteAll() {
@@ -21,7 +20,8 @@ private fun delAllFile(path: String): Boolean {
         return flag
     }
     val tempList = file.list()
-    var temp: File? = null
+    tempList?: return flag
+    var temp: File?
     for (i in tempList.indices) {
         temp = if (path.endsWith(File.separator)) {
             File(path + tempList[i])

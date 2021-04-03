@@ -1,8 +1,7 @@
-package com.chenxuan.common.base
+package com.chenxuan.base
 
 import androidx.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
-import com.chenxuan.common.BuildConfig
 import com.didichuxing.doraemonkit.DoraemonKit
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger

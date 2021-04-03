@@ -1,117 +1,103 @@
-package com.chenxuan.gradle;
+package com.chenxuan.gradle
 
-import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.compress.utils.IOUtils;
+import org.apache.commons.codec.digest.DigestUtils
+import org.apache.commons.compress.utils.IOUtils
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.util.*
+import java.util.jar.JarFile
+import java.util.jar.JarOutputStream
+import java.util.zip.ZipEntry
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.List;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
-import java.util.jar.JarOutputStream;
-import java.util.zip.ZipEntry;
-
-class JarUtils {
-
-    public static File modifyJarFile(File jarFile, File tempDir,
-                                     BaseTransform transform) throws IOException {
-        String hexName = DigestUtils.md5Hex(jarFile.getAbsolutePath()).substring(0, 8);
-        File optJar = new File(tempDir, hexName + jarFile.getName());
-        JarOutputStream jarOutputStream = new JarOutputStream(new FileOutputStream(optJar));
-        JarFile file = new JarFile(jarFile);
-        Enumeration<JarEntry> enumeration = file.entries();
+internal object JarUtils {
+    @Throws(IOException::class)
+    fun modifyJarFile(
+        jarFile: File, tempDir: File?,
+        transform: BaseTransform
+    ): File {
+        val hexName = DigestUtils.md5Hex(jarFile.absolutePath).substring(0, 8)
+        val optJar = File(tempDir, hexName + jarFile.name)
+        val jarOutputStream = JarOutputStream(FileOutputStream(optJar))
+        val file = JarFile(jarFile)
+        val enumeration = file.entries()
         while (enumeration.hasMoreElements()) {
-            JarEntry jarEntry = enumeration.nextElement();
-            InputStream inputStream = file.getInputStream(jarEntry);
-
-            String entryName = jarEntry.getName();
-
-            ZipEntry zipEntry = new ZipEntry(entryName);
-
-            jarOutputStream.putNextEntry(zipEntry);
-            byte[] modifiedClassBytes = null;
-            byte[] sourceClassBytes = IOUtils.toByteArray(inputStream);
+            val jarEntry = enumeration.nextElement()
+            val inputStream = file.getInputStream(jarEntry)
+            val entryName = jarEntry.name
+            val zipEntry = ZipEntry(entryName)
+            jarOutputStream.putNextEntry(zipEntry)
+            var modifiedClassBytes: ByteArray? = null
+            val sourceClassBytes = IOUtils.toByteArray(inputStream)
             if (entryName.endsWith(".class")) {
                 try {
-                    modifiedClassBytes = transform.process(entryName, sourceClassBytes);
-                } catch (Exception ignored) {
-
+                    modifiedClassBytes = transform.process(entryName, sourceClassBytes)
+                } catch (ignored: Exception) {
                 }
             }
             if (modifiedClassBytes == null) {
-                jarOutputStream.write(sourceClassBytes);
+                jarOutputStream.write(sourceClassBytes)
             } else {
-                jarOutputStream.write(modifiedClassBytes);
+                jarOutputStream.write(modifiedClassBytes)
             }
-            jarOutputStream.closeEntry();
+            jarOutputStream.closeEntry()
         }
-        jarOutputStream.close();
-        file.close();
-        return optJar;
+        jarOutputStream.close()
+        file.close()
+        return optJar
     }
 
-
-    static HashSet<String> scanJarFile(File jarFile) throws IOException {
-        HashSet<String> hashSet = new HashSet<>();
-        JarFile file = new JarFile(jarFile);
-        Enumeration<JarEntry> enumeration = file.entries();
+    @Throws(IOException::class)
+    fun scanJarFile(jarFile: File?): HashSet<String> {
+        val hashSet = HashSet<String>()
+        val file = JarFile(jarFile)
+        val enumeration = file.entries()
         while (enumeration.hasMoreElements()) {
-            JarEntry jarEntry = enumeration.nextElement();
-            String entryName = jarEntry.getName();
+            val jarEntry = enumeration.nextElement()
+            val entryName = jarEntry.name
             if (entryName.endsWith(".class")) {
-                hashSet.add(entryName);
+                hashSet.add(entryName)
             }
         }
-        file.close();
-        return hashSet;
+        file.close()
+        return hashSet
     }
 
-    static void deleteJarScan(File jarFile, List<String> removeClasses, DeleteCallBack callBack) throws IOException {
-        JarFile file = new JarFile(jarFile);
-        Enumeration<JarEntry> enumeration = file.entries();
+    @Throws(IOException::class)
+    fun deleteJarScan(jarFile: File?, removeClasses: List<String?>, callBack: DeleteCallBack?) {
+        val file = JarFile(jarFile)
+        val enumeration = file.entries()
         while (enumeration.hasMoreElements()) {
-            JarEntry jarEntry = enumeration.nextElement();
-            String entryName = jarEntry.getName();
+            val jarEntry = enumeration.nextElement()
+            val entryName = jarEntry.name
             if (entryName.endsWith(".class") && removeClasses.contains(entryName)) {
-                InputStream inputStream = file.getInputStream(jarEntry);
-                byte[] sourceClassBytes = IOUtils.toByteArray(inputStream);
+                val inputStream = file.getInputStream(jarEntry)
+                val sourceClassBytes = IOUtils.toByteArray(inputStream)
                 try {
-                    if (callBack != null) {
-                        callBack.delete(entryName, sourceClassBytes);
-                    }
-                } catch (Exception ignored) {
-
+                    callBack?.delete(entryName, sourceClassBytes)
+                } catch (ignored: Exception) {
                 }
             }
-
         }
-        file.close();
+        file.close()
     }
 
-
-    static void deleteJarScan(File jarFile, DeleteCallBack callBack) throws IOException {
-        JarFile file = new JarFile(jarFile);
-        Enumeration<JarEntry> enumeration = file.entries();
+    @Throws(IOException::class)
+    fun deleteJarScan(jarFile: File?, callBack: DeleteCallBack?) {
+        val file = JarFile(jarFile)
+        val enumeration = file.entries()
         while (enumeration.hasMoreElements()) {
-            JarEntry jarEntry = enumeration.nextElement();
-            InputStream inputStream = file.getInputStream(jarEntry);
-            String entryName = jarEntry.getName();
-            byte[] sourceClassBytes = IOUtils.toByteArray(inputStream);
+            val jarEntry = enumeration.nextElement()
+            val inputStream = file.getInputStream(jarEntry)
+            val entryName = jarEntry.name
+            val sourceClassBytes = IOUtils.toByteArray(inputStream)
             if (entryName.endsWith(".class")) {
                 try {
-                    if (callBack != null) {
-                        callBack.delete(entryName, sourceClassBytes);
-                    }
-                } catch (Exception ignored) {
-
+                    callBack?.delete(entryName, sourceClassBytes)
+                } catch (ignored: Exception) {
                 }
             }
-
         }
-        file.close();
+        file.close()
     }
 }

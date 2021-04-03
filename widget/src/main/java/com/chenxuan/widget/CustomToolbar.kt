@@ -20,21 +20,16 @@ class CustomToolbar @JvmOverloads constructor(
     defStyleRes: Int = 0
 ) : RelativeLayout(context, attributeSet, defStyleAttr, defStyleRes) {
     private val view = LayoutInflater.from(context).inflate(R.layout.toolbar, this, true)
-    private var back: ImageView
-    private var title: TextView
-    private var feature: TextView
-    private var icon: ImageView
-    private var separate: View
+    private var back: ImageView = view.findViewById(R.id.toolbarBack)
+    private var title: TextView = view.findViewById(R.id.toolbarContent)
+    private var feature: TextView = view.findViewById(R.id.toolbarFeature)
+    private var icon: ImageView = view.findViewById(R.id.toolbarIcon)
+    private var separate: View = view.findViewById(R.id.toolbarSeparate)
     private var backListener: Callback? = null
     private var featureListener: Callback? = null
     private var iconListener: Callback? = null
 
     init {
-        back = view.findViewById(R.id.toolbarBack)
-        title = view.findViewById(R.id.toolbarContent)
-        feature = view.findViewById(R.id.toolbarFeature)
-        icon = view.findViewById(R.id.toolbarIcon)
-        separate = view.findViewById(R.id.toolbarSeparate)
 
         val typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.CustomToolbar)
         val content = typedArray.getString(R.styleable.CustomToolbar_barContent)

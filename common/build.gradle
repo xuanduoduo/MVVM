@@ -27,4 +27,5 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api project(path: ':base')
     api project(path: ':bean')
+    implementation project(path: ':net')
 }

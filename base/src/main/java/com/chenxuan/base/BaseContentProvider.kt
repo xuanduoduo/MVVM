@@ -1,4 +1,4 @@
-package com.chenxuan.common.base
+package com.chenxuan.base
 
 import android.content.ContentProvider
 import android.content.ContentValues

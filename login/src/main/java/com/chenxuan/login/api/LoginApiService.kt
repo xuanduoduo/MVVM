@@ -2,7 +2,7 @@ package com.chenxuan.login.api
 
 import com.chenxuan.bean.login.Chapters
 import com.chenxuan.common.base.BaseService
-import com.chenxuan.common.base.BaseResponse
+import com.chenxuan.net.BaseResponse
 import retrofit2.http.GET
 
 /**

@@ -1,4 +1,4 @@
-package com.chenxuan.common.base
+package com.chenxuan.net
 
 /**
  * @author cx

@@ -1,6 +1,6 @@
 package com.chenxuan.net
 
-import com.chenxuan.common.base.BaseContentProvider
+import com.chenxuan.base.BaseContentProvider
 
 /**
  * @author cx

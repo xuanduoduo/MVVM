@@ -1,5 +1,6 @@
 package com.chenxuan.common.base
 
+import com.chenxuan.net.BaseResponse
 import kotlinx.coroutines.CoroutineScope
 
 /**

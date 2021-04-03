@@ -13,7 +13,7 @@ import android.widget.TextView
 /**
  * @author cx
  */
-class VerificationCodeView @JvmOverloads constructor(
+class VerificationView @JvmOverloads constructor(
     context: Context?,
     attributeSet: AttributeSet? = null,
     defStyleAttr: Int = 0,
@@ -21,26 +21,19 @@ class VerificationCodeView @JvmOverloads constructor(
 ) : RelativeLayout(context, attributeSet, defStyleAttr, defStyleRes) {
     private var view =
         LayoutInflater.from(context).inflate(R.layout.view_verification_code, this, true)
-    private var tv1: TextView
-    private var tv2: TextView
-    private var tv3: TextView
-    private var tv4: TextView
-    private var tv5: TextView
-    private var tv6: TextView
-    private var et: EditText
+    private var tv1: TextView = view.findViewById(R.id.tvVerification1)
+    private var tv2: TextView = view.findViewById(R.id.tvVerification2)
+    private var tv3: TextView = view.findViewById(R.id.tvVerification3)
+    private var tv4: TextView = view.findViewById(R.id.tvVerification4)
+    private var tv5: TextView = view.findViewById(R.id.tvVerification5)
+    private var tv6: TextView = view.findViewById(R.id.tvVerification6)
+    private var et: EditText = view.findViewById(R.id.etVerification)
 
     val codes = arrayListOf<String>()
 
     var block: ((Boolean) -> Unit)? = null
 
     init {
-        tv1 = view.findViewById(R.id.tvVerification1)
-        tv2 = view.findViewById(R.id.tvVerification2)
-        tv3 = view.findViewById(R.id.tvVerification3)
-        tv4 = view.findViewById(R.id.tvVerification4)
-        tv5 = view.findViewById(R.id.tvVerification5)
-        tv6 = view.findViewById(R.id.tvVerification6)
-        et = view.findViewById(R.id.etVerification)
 
         setTextViews()
 

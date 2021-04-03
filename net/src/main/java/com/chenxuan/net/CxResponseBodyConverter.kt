@@ -1,7 +1,5 @@
 package com.chenxuan.net
 
-import com.chenxuan.common.base.BaseResponse
-import com.chenxuan.common.base.BaseResponseCode
 import com.google.gson.Gson
 import com.google.gson.TypeAdapter
 import okhttp3.ResponseBody

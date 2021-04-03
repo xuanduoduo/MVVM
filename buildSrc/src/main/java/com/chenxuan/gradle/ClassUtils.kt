@@ -1,40 +1,37 @@
-package com.chenxuan.gradle;
+package com.chenxuan.gradle
 
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.File
+import java.io.FileOutputStream
 
-public class ClassUtils {
-
-    public static String path2Classname(String entryName) {
-        return entryName.replace(File.separator, ".").replace(".class", "");
+object ClassUtils {
+    fun path2Classname(entryName: String): String {
+        return entryName.replace(File.separator, ".").replace(".class", "")
     }
 
-    public static boolean checkClassName(String className) {
+    fun checkClassName(className: String): Boolean {
         return (!className.contains("$")
                 && !className.contains("BuildConfig")
                 && !className.contains("_Impl")
                 && !className.endsWith("R")
-                && className.contains("chenxuan")
-        );
+                && className.contains("chenxuan"))
     }
 
-    public static File saveFile(File mTempDir, byte[] modifiedClassBytes) {
-        File modified = null;
+    fun saveFile(mTempDir: File?, modifiedClassBytes: ByteArray?): File? {
+        var modified: File? = null
         try {
             if (modifiedClassBytes != null) {
-                modified = mTempDir;
-                if (modified.exists()) {
-                    modified.delete();
+                modified = mTempDir
+                if (modified!!.exists()) {
+                    modified.delete()
                 }
-                modified.createNewFile();
-                FileOutputStream stream = new FileOutputStream(modified);
-                stream.write(modifiedClassBytes);
-                stream.close();
+                modified.createNewFile()
+                val stream = FileOutputStream(modified)
+                stream.write(modifiedClassBytes)
+                stream.close()
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
-        return modified;
+        return modified
     }
-
 }

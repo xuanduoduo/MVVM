@@ -289,8 +289,8 @@ class BaseTransform(
             val newJarFileName = JarUtils.scanJarFile(jarInput.file)
             val diff =
                 SetDiff(oldJarFileName, newJarFileName)
-            val removeList = diff.removedList
-            if (removeList.size > 0) {
+            val removeList = diff.getRemovedList()
+            if (removeList.isNotEmpty()) {
                 JarUtils.deleteJarScan(dest, removeList, deleteCallBack)
             }
             foreachJar(dest, jarInput)
