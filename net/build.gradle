@@ -6,10 +6,10 @@ plugins {
 def root_android = rootProject.ext.android
 
 android {
-    compileSdkVersion root_android.compileSdkVersion
     defaultConfig {
         minSdkVersion root_android.minSdkVersion
         targetSdkVersion root_android.targetSdkVersion
+        compileSdkVersion root_android.compileSdkVersion
         versionCode root_android.versionCode
         versionName root_android.versionName
     }
@@ -19,7 +19,6 @@ android {
             minifyEnabled false
         }
     }
-
 }
 
 dependencies {

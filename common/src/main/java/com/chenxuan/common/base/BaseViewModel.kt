@@ -8,12 +8,12 @@ import kotlinx.coroutines.launch
 /**
  * @author cx
  */
-abstract class BaseViewModel<T : BaseRepository> : ViewModel() {
+abstract class BaseViewModel<R : BaseRepository> : ViewModel() {
     protected val repository by lazy {
         createRepository()
     }
 
-    abstract fun createRepository(): T
+    abstract fun createRepository(): R
 
     /**
      * 协程状态管理

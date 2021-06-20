@@ -5,17 +5,16 @@ import android.widget.Toast
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.chenxuan.common.base.BaseSimpleActivity
 import com.chenxuan.common.utils.router.RouterPath
-import com.chenxuan.login.R
+import com.chenxuan.login.databinding.LoginActivityScanBinding
 import com.google.zxing.client.result.ParsedResultType
 import com.mylhyl.zxing.scanner.ScannerOptions
-import kotlinx.android.synthetic.main.login_activity_scan.*
 
 /**
  * @author cx
  */
 @Route(path = RouterPath.LOGIN_SCAN)
-class ScanActivity : BaseSimpleActivity() {
-    override fun getContentView() = R.layout.login_activity_scan
+class ScanActivity : BaseSimpleActivity<LoginActivityScanBinding>() {
+    override fun createViewBinding() = LoginActivityScanBinding.inflate(layoutInflater)
 
     override fun initData(savedInstanceState: Bundle?) {
     }
@@ -25,8 +24,8 @@ class ScanActivity : BaseSimpleActivity() {
         options.setFrameCornerHide(true)
         options.setFrameHide(true)
         options.setScanFullScreen(true)
-        scanner_view.setScannerOptions(options.build())
-        scanner_view.setOnScannerCompletionListener { rawResult, parsedResult, barcode ->
+        binding.scannerView.setScannerOptions(options.build())
+        binding.scannerView.setOnScannerCompletionListener { rawResult, parsedResult, barcode ->
             when (parsedResult.type) {
                 ParsedResultType.ADDRESSBOOK -> {
                 }
@@ -45,12 +44,12 @@ class ScanActivity : BaseSimpleActivity() {
     }
 
     override fun onResume() {
-        scanner_view.onResume()
+        binding.scannerView.onResume()
         super.onResume()
     }
 
     override fun onPause() {
-        scanner_view.onPause()
+        binding.scannerView.onPause()
         super.onPause()
     }
 }

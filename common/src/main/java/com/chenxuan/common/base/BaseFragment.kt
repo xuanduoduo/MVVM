@@ -2,6 +2,7 @@ package com.chenxuan.common.base
 
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.viewbinding.ViewBinding
 import com.blankj.utilcode.util.ToastUtils
 import com.chenxuan.common.utils.common.ProgressDialog
 import kotlinx.coroutines.launch
@@ -9,8 +10,9 @@ import kotlinx.coroutines.launch
 /**
  * @author cx
  */
-abstract class BaseFragment<V : BaseRepository, T : BaseViewModel<V>> : BaseSimpleFragment() {
-    protected val viewModel: T by lazy {
+abstract class BaseFragment<VM : BaseViewModel<R>, R : BaseRepository, VB : ViewBinding> :
+    BaseSimpleFragment<VB>() {
+    protected val viewModel: VM by lazy {
         createViewModel()
     }
 
@@ -49,7 +51,7 @@ abstract class BaseFragment<V : BaseRepository, T : BaseViewModel<V>> : BaseSimp
         })
     }
 
-    abstract fun createViewModel(): T
+    abstract fun createViewModel(): VM
 
     fun launch(block: Block) {
         lifecycleScope.launch {

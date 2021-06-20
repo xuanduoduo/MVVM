@@ -6,30 +6,29 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.chenxuan.common.base.BaseActivity
 import com.chenxuan.common.utils.ktx.setSingleClick
 import com.chenxuan.common.utils.router.RouterPath
-import com.chenxuan.login.R
+import com.chenxuan.login.databinding.LoginActivityLoginBinding
 import com.chenxuan.login.repository.LoginRepository
 import com.chenxuan.login.viewmodel.LoginViewModel
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.login_activity_login.*
 
 /**
  * @author cx
  */
 @Route(path = RouterPath.LOGIN_MAIN)
-class LoginActivity : BaseActivity<LoginRepository, LoginViewModel>() {
-    override fun createViewModel() = ViewModelProvider(this)[LoginViewModel::class.java]
+class LoginActivity : BaseActivity<LoginViewModel, LoginRepository, LoginActivityLoginBinding>() {
+    override fun createViewBinding() = LoginActivityLoginBinding.inflate(layoutInflater)
 
-    override fun getContentView() = R.layout.login_activity_login
+    override fun createViewModel() = ViewModelProvider(this)[LoginViewModel::class.java]
 
     override fun initData(savedInstanceState: Bundle?) {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
         viewModel.contentLiveData.observe(this) { content ->
-            tvLogin.text = Gson().toJson(content)
+            binding.tvLogin.text = Gson().toJson(content)
         }
 
-        tvLogin.setSingleClick {
+        binding.tvLogin.setSingleClick {
             viewModel.getChapters()
         }
     }

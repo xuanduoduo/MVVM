@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-android-extensions'
     id 'kotlin-kapt'
 }
 
@@ -9,21 +8,27 @@ def root_android = rootProject.ext.android
 def root_dependencies = rootProject.ext.dependencies
 
 android {
-    compileSdkVersion root_android.compileSdkVersion
     defaultConfig {
         applicationId root_android.applicationId
         minSdkVersion root_android.minSdkVersion
         targetSdkVersion root_android.targetSdkVersion
+        compileSdkVersion root_android.compileSdkVersion
         versionCode root_android.versionCode
         versionName root_android.versionName
         multiDexEnabled true
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures {
+        viewBinding true
+    }
+
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8

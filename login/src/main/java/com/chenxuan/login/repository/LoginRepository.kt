@@ -12,8 +12,9 @@ import kotlinx.coroutines.withContext
  * @author cx
  */
 class LoginRepository : BaseRepository() {
+    private val service = ApiServiceUtil.getApiService<LoginApiService>()
+
     suspend fun getChapters(): BaseResponse<List<Chapters>> {
-        val service = ApiServiceUtil.getApiService<LoginApiService>()
         return withContext(Dispatchers.IO) {
             service.getChapters()
         }
