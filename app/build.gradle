@@ -46,6 +46,6 @@ dependencies {
     implementation project(path: ':common')
     kapt root_dependencies.arouter_compiler
     if (isLoginModule.toBoolean()) {
-        implementation project(path: ':login')
+        implementation project(path: ':business')
     }
 }

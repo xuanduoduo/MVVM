@@ -13,10 +13,10 @@ class CustomTransform : Transform() {
     override fun transform(transformInvocation: TransformInvocation) {
         val asmHelper = CustomAsmHelper()
         val baseTransform = BaseTransform(transformInvocation, object : TransformCallBack {
-            override fun process(className: String, bytes: ByteArray?): ByteArray? {
+            override fun process(className: String, classBytes: ByteArray?): ByteArray? {
                 if (checkClassName(className)) {
                     try {
-                        return asmHelper.modifyClass(bytes)
+                        return asmHelper.modifyClass(classBytes)
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }

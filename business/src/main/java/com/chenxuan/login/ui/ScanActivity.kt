@@ -5,7 +5,7 @@ import android.widget.Toast
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.chenxuan.common.base.BaseSimpleActivity
 import com.chenxuan.common.utils.router.RouterPath
-import com.chenxuan.login.databinding.LoginActivityScanBinding
+import com.chenxuan.login.databinding.BusinessScanActivityBinding
 import com.google.zxing.client.result.ParsedResultType
 import com.mylhyl.zxing.scanner.ScannerOptions
 
@@ -13,8 +13,8 @@ import com.mylhyl.zxing.scanner.ScannerOptions
  * @author cx
  */
 @Route(path = RouterPath.LOGIN_SCAN)
-class ScanActivity : BaseSimpleActivity<LoginActivityScanBinding>() {
-    override fun createViewBinding() = LoginActivityScanBinding.inflate(layoutInflater)
+class ScanActivity : BaseSimpleActivity<BusinessScanActivityBinding>() {
+    override fun createViewBinding() = BusinessScanActivityBinding.inflate(layoutInflater)
 
     override fun initData(savedInstanceState: Bundle?) {
     }

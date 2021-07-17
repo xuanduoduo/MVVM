@@ -10,7 +10,7 @@ app/build/
 base/build/
 bean/build/
 common/build/
-login/build/
+business/build/
 net/build/
 widget/build/
 room/build/

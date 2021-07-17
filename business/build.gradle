@@ -14,7 +14,7 @@ def root_android = rootProject.ext.android
 def root_dependencies = rootProject.ext.dependencies
 
 android {
-    resourcePrefix "login_"
+    resourcePrefix "business_"
 
     defaultConfig {
         minSdkVersion root_android.minSdkVersion
