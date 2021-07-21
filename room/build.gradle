@@ -5,6 +5,7 @@ plugins {
 
 def root_android = rootProject.ext.android
 def root_dependencies = rootProject.ext.dependencies
+def root_room = rootProject.ext.room
 
 android {
     defaultConfig {
@@ -25,7 +26,5 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation root_dependencies.kotlin
-    implementation root_dependencies.room
-    implementation root_dependencies.room_compiler
-    implementation root_dependencies.room_ktx
+    root_room.each { k, v -> implementation v }
 }

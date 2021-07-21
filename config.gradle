@@ -47,11 +47,6 @@ ext {
             viewmodel            : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle",
             livedata             : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle",
             lifecycle            : "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycle",
-            work_manager         : "androidx.work:work-runtime:$versions.work_manager",
-            work_manager_ktx     : "androidx.work:work-runtime-ktx:$versions.work_manager",
-            room                 : "androidx.room:room-runtime:$versions.room",
-            room_compiler        : "androidx.room:room-compiler:$versions.room",
-            room_ktx             : "androidx.room:room-ktx:$versions.room",
             constraintlayout     : "androidx.constraintlayout:constraintlayout:$versions.constraintlayout",
             recyclerview         : "androidx.recyclerview:recyclerview:$versions.recyclerview",
             material             : "com.google.android.material:material:$versions.material",
@@ -64,12 +59,10 @@ ext {
             utilcodex            : "com.blankj:utilcodex:$versions.utilcodex",
             //https://github.com/alibaba/ARouter/blob/master/README_CN.md
             arouter              : "com.alibaba:arouter-api:$versions.arouter",
-            arouter_compiler     : "com.alibaba:arouter-compiler:$versions.arouter_compiler",
             //https://github.com/JessYanCoding/AndroidAutoSize
             autosize             : "me.jessyan:autosize:$versions.autosize",
             //https://github.com/bumptech/glide
             glide                : "com.github.bumptech.glide:glide:$versions.glide",
-            glide_compiler       : "com.github.bumptech.glide:compiler:$versions.glide_compiler",
             //https://github.com/afollestad/material-dialogs
             material_dialogs     : "com.afollestad.material-dialogs:commons:$versions.material_dialogs",
             //https://github.com/orhanobut/logger
@@ -82,14 +75,36 @@ ext {
             recyclerview_adapter : "com.github.CymChad:BaseRecyclerViewAdapterHelper:$versions.recyclerview_adapter",
             //https://github.com/yanzhenjie/AndPermission
             permissions          : "com.yanzhenjie:permission:$versions.permissions",
-            //https://github.com/square/leakcanary
-            leakcanary           : "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary",
             //65536分包
             multidex             : "com.android.support:multidex:$versions.multidex",
             //https://github.com/mylhyl/Android-Zxing
             zxing                : "com.mylhyl:zxingscanner:$versions.zxing",
+    ]
+
+    kapt = [
+            arouter_compiler: "com.alibaba:arouter-compiler:$versions.arouter_compiler",
+            glide_compiler  : "com.github.bumptech.glide:compiler:$versions.glide_compiler",
+    ]
+
+    debug = [
+            //https://github.com/square/leakcanary
+            leakcanary: "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary",
             //dokit
-            dokitx               : "com.didichuxing.doraemonkit:dokitx:$versions.dokitx",
-            dokitx_release       : "com.didichuxing.doraemonkit:dokitx-no-op:$versions.dokitx",
+            dokitx    : "com.didichuxing.doraemonkit:dokitx:$versions.dokitx",
+    ]
+
+    release = [
+            dokitx_release: "com.didichuxing.doraemonkit:dokitx-no-op:$versions.dokitx",
+    ]
+
+    room = [
+            room         : "androidx.room:room-runtime:$versions.room",
+            room_compiler: "androidx.room:room-compiler:$versions.room",
+            room_ktx     : "androidx.room:room-ktx:$versions.room",
+    ]
+
+    work = [
+            work_manager    : "androidx.work:work-runtime:$versions.work_manager",
+            work_manager_ktx: "androidx.work:work-runtime-ktx:$versions.work_manager",
     ]
 }

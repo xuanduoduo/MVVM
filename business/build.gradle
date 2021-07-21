@@ -11,7 +11,7 @@ if (isLoginModule.toBoolean()) {
 }
 
 def root_android = rootProject.ext.android
-def root_dependencies = rootProject.ext.dependencies
+def root_kapt = rootProject.ext.kapt
 
 android {
     resourcePrefix "business_"
@@ -60,5 +60,5 @@ dependencies {
     implementation project(path: ':common')
     implementation project(path: ':net')
     implementation project(path: ':widget')
-    kapt root_dependencies.arouter_compiler
+    kapt root_kapt.arouter_compiler
 }

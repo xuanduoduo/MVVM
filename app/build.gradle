@@ -5,7 +5,7 @@ plugins {
 }
 
 def root_android = rootProject.ext.android
-def root_dependencies = rootProject.ext.dependencies
+def root_kapt = rootProject.ext.kapt
 
 android {
     defaultConfig {
@@ -44,7 +44,7 @@ kapt {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':common')
-    kapt root_dependencies.arouter_compiler
+    kapt root_kapt.arouter_compiler
     if (isLoginModule.toBoolean()) {
         implementation project(path: ':business')
     }

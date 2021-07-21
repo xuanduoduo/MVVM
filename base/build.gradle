@@ -6,6 +6,9 @@ plugins {
 
 def root_android = rootProject.ext.android
 def root_dependencies = rootProject.ext.dependencies
+def root_kapt = rootProject.ext.kapt
+def root_debug = rootProject.ext.debug
+def root_release = rootProject.ext.release
 
 android {
     defaultConfig {
@@ -31,35 +34,8 @@ kapt {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api root_dependencies.kotlin
-    api root_dependencies.androidx_core
-    api root_dependencies.appcompat
-    api root_dependencies.viewmodel
-    api root_dependencies.livedata
-    api root_dependencies.lifecycle
-    api root_dependencies.constraintlayout
-    api root_dependencies.recyclerview
-    api root_dependencies.material
-    api root_dependencies.retrofit
-    api root_dependencies.converter_gson
-    api root_dependencies.logging_interceptor
-    api root_dependencies.live_event_bus
-    api root_dependencies.utilcodex
-    api root_dependencies.arouter
-    kapt root_dependencies.arouter_compiler
-    api root_dependencies.autosize
-    api root_dependencies.glide
-    kapt root_dependencies.glide_compiler
-    api root_dependencies.material_dialogs
-    api root_dependencies.logger
-    api root_dependencies.immersionbar
-    api root_dependencies.immersionbar_fragment
-    api root_dependencies.immersionbar_ktx
-    api root_dependencies.recyclerview_adapter
-    api root_dependencies.permissions
-    debugApi root_dependencies.leakcanary
-    api root_dependencies.multidex
-    api root_dependencies.zxing
-    debugApi root_dependencies.dokitx
-    releaseApi root_dependencies.dokitx_release
+    root_dependencies.each { k, v -> api v }
+    root_kapt.each { k, v -> kapt v }
+    root_debug.each { k, v -> debugApi v }
+    root_release.each { k, v -> releaseApi v }
 }
