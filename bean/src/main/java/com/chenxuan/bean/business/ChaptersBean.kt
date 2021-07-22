@@ -1,4 +1,4 @@
-package com.chenxuan.bean.login
+package com.chenxuan.bean.business
 
 /**
  * @author cx

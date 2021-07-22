@@ -4,7 +4,7 @@ plugins {
     id 'kotlin-kapt'
 }
 
-if (isLoginModule.toBoolean()) {
+if (isBusinessModule.toBoolean()) {
     apply plugin: 'com.android.library'
 } else {
     apply plugin: 'com.android.application'
@@ -23,14 +23,14 @@ android {
         versionCode root_android.versionCode
         versionName root_android.versionName
 
-        if (!isLoginModule.toBoolean()) {
-            applicationId "com.chenxuan.kotlin.login"
+        if (!isBusinessModule.toBoolean()) {
+            applicationId "com.chenxuan.kotlin.business"
         }
     }
 
     sourceSets {
         main {
-            if (isLoginModule.toBoolean()) {
+            if (isBusinessModule.toBoolean()) {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
             } else {
                 manifest.srcFile 'src/main/manifest/AndroidManifest.xml'

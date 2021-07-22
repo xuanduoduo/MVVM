@@ -1,4 +1,4 @@
-package com.chenxuan.widget
+package com.chenxuan.widget.view
 
 import android.app.Activity
 import android.content.Context
@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import com.chenxuan.widget.R
 import com.chenxuan.widget.utils.Callback
 
 /**

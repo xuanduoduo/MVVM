@@ -12,7 +12,7 @@ object IntentUtils {
     fun gotoScanActivity() {
         ActivityUtils.getTopActivity().andPermission(Permission.CAMERA) {
             onGranted {
-                Router.startActivity(RouterPath.LOGIN_SCAN)
+                Router.startActivity(RouterPath.BUSINESS_SCAN)
             }
             onDenied {
                 ToastUtils.showShort("请打开摄像头权限")

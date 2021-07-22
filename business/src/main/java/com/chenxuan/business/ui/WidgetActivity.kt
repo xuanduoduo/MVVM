@@ -1,15 +1,15 @@
-package com.chenxuan.login.ui
+package com.chenxuan.business.ui
 
 import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.chenxuan.common.base.BaseSimpleActivity
 import com.chenxuan.common.utils.router.RouterPath
-import com.chenxuan.login.databinding.BusinessWidgetActivityBinding
+import com.chenxuan.business.databinding.BusinessWidgetActivityBinding
 
 /**
  * @author cx
  */
-@Route(path = RouterPath.LOGIN_WIDGET)
+@Route(path = RouterPath.BUSINESS_WIDGET)
 class WidgetActivity : BaseSimpleActivity<BusinessWidgetActivityBinding>() {
     override fun createViewBinding() = BusinessWidgetActivityBinding.inflate(layoutInflater)
 

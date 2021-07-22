@@ -1,18 +1,18 @@
-package com.chenxuan.login.ui
+package com.chenxuan.business.ui
 
 import android.os.Bundle
 import android.widget.Toast
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.chenxuan.common.base.BaseSimpleActivity
 import com.chenxuan.common.utils.router.RouterPath
-import com.chenxuan.login.databinding.BusinessScanActivityBinding
+import com.chenxuan.business.databinding.BusinessScanActivityBinding
 import com.google.zxing.client.result.ParsedResultType
 import com.mylhyl.zxing.scanner.ScannerOptions
 
 /**
  * @author cx
  */
-@Route(path = RouterPath.LOGIN_SCAN)
+@Route(path = RouterPath.BUSINESS_SCAN)
 class ScanActivity : BaseSimpleActivity<BusinessScanActivityBinding>() {
     override fun createViewBinding() = BusinessScanActivityBinding.inflate(layoutInflater)
 

@@ -1,4 +1,4 @@
-package com.chenxuan.widget
+package com.chenxuan.widget.view
 
 import android.content.Context
 import android.util.AttributeSet

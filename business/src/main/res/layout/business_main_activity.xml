@@ -5,20 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="20dp"
-    tools:context=".ui.LoginActivity">
+    tools:context=".ui.MainActivity">
 
-    <com.chenxuan.widget.CustomToolbar
-        android:id="@+id/loginToolbar"
+    <com.chenxuan.widget.view.CustomToolbar
+        android:id="@+id/businessToolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        app:barContent="登录"
+        app:barContent="Main"
         app:barIcon="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvLogin"
+        android:id="@+id/tvBusiness"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -28,6 +28,7 @@
         android:maxLines="5"
         android:text="HTTP"
         android:textColor="@android:color/holo_orange_dark"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

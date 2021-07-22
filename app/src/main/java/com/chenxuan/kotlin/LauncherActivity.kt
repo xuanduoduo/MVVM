@@ -21,7 +21,7 @@ class LauncherActivity : BaseSimpleActivity<AppActivityLauncherBinding>() {
 
     override fun initView(savedInstanceState: Bundle?) {
         binding.tvLauncher.setSingleClick {
-            Router.startActivity(RouterPath.LOGIN_MAIN)
+            Router.startActivity(RouterPath.BUSINESS_MAIN)
         }
     }
 }

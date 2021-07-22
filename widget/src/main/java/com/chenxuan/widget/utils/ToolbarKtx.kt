@@ -1,6 +1,6 @@
 package com.chenxuan.widget.utils
 
-import com.chenxuan.widget.CustomToolbar
+import com.chenxuan.widget.view.CustomToolbar
 
 /**
  * @author cx

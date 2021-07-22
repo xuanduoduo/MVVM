@@ -45,7 +45,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':common')
     kapt root_kapt.arouter_compiler
-    if (isLoginModule.toBoolean()) {
+    if (isBusinessModule.toBoolean()) {
         implementation project(path: ':business')
     }
 }
