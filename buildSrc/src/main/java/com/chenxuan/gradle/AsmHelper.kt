@@ -4,5 +4,5 @@ import java.io.IOException
 
 interface AsmHelper {
     @Throws(IOException::class)
-    fun modifyClass(srcClass: ByteArray?): ByteArray
+    fun modifyClass(srcClass: ByteArray): ByteArray
 }

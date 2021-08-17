@@ -14,16 +14,13 @@ class CustomAsmHelper : AsmHelper {
     private val path = System.getProperty("user.home") + File.separator + "Downloads"
     private val targetFile = File(path + "/inject_" + System.currentTimeMillis() + ".txt")
 
-    override fun modifyClass(srcClass: ByteArray?): ByteArray {
+    override fun modifyClass(srcClass: ByteArray): ByteArray {
         val classNode = ClassNode(Opcodes.ASM5)
         val classReader = ClassReader(srcClass)
-        //1 将读入的字节转为classNode
         classReader.accept(classNode, 0)
         classNodeMap[classNode.name] = classNode
-        //2 操作
         printName(classNode)
         val classWriter = ClassWriter(0)
-        //3  将classNode转为字节数组
         classNode.accept(classWriter)
         return classWriter.toByteArray()
     }
@@ -34,5 +31,4 @@ class CustomAsmHelper : AsmHelper {
         fileWriter.flush()
         fileWriter.close()
     }
-
 }

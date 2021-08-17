@@ -9,11 +9,9 @@ object ClassUtils {
     }
 
     fun checkClassName(className: String): Boolean {
-        return (!className.contains("$")
-                && !className.contains("BuildConfig")
+        return (!className.contains("BuildConfig")
                 && !className.contains("_Impl")
-                && !className.endsWith("R")
-                && className.contains("chenxuan"))
+                && !className.endsWith("R"))
     }
 
     fun saveFile(mTempDir: File?, modifiedClassBytes: ByteArray?): File? {

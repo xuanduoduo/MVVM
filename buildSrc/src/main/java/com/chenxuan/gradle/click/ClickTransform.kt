@@ -1,20 +1,22 @@
-package com.chenxuan.gradle
+package com.chenxuan.gradle.click
 
 import com.android.build.api.transform.QualifiedContent
 import com.android.build.api.transform.Transform
 import com.android.build.api.transform.TransformException
 import com.android.build.api.transform.TransformInvocation
 import com.android.build.gradle.internal.pipeline.TransformManager
-import com.chenxuan.gradle.ClassUtils.checkClassName
+import com.chenxuan.gradle.BaseTransform
+import com.chenxuan.gradle.ClassUtils
+import com.chenxuan.gradle.TransformCallBack
 import java.io.IOException
 
-class CustomTransform : Transform() {
+class ClickTransform : Transform() {
     @Throws(TransformException::class, InterruptedException::class, IOException::class)
     override fun transform(transformInvocation: TransformInvocation) {
-        val asmHelper = CustomAsmHelper()
+        val asmHelper = ClickAsmHelper()
         val baseTransform = BaseTransform(transformInvocation, object : TransformCallBack {
             override fun process(className: String, classBytes: ByteArray?): ByteArray? {
-                if (checkClassName(className)) {
+                if (ClassUtils.checkClassName(className)) {
                     try {
                         classBytes ?: return null
                         return asmHelper.modifyClass(classBytes)
@@ -29,7 +31,7 @@ class CustomTransform : Transform() {
     }
 
     override fun getName(): String {
-        return "CustomTransform"
+        return "ClickTransform"
     }
 
     override fun getInputTypes(): Set<QualifiedContent.ContentType> {
