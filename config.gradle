@@ -40,7 +40,7 @@ ext {
             dokitx              : '3.3.5',
     ]
 
-    dependencies = [
+    common = [
             kotlin               : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin",
             androidx_core        : "androidx.core:core-ktx:$versions.androidx_core",
             appcompat            : "androidx.appcompat:appcompat:$versions.appcompat",

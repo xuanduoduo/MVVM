@@ -1,6 +1,5 @@
 package com.chenxuan.common.base
 
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import com.blankj.utilcode.util.ToastUtils
@@ -22,7 +21,7 @@ abstract class BaseActivity<VM : BaseViewModel<R>, R : BaseRepository, VB : View
     }
 
     private fun initViewModelActions() {
-        viewModel.statusLiveData.observe(this, Observer { status ->
+        viewModel.statusLiveData.observe(this, { status ->
             status?.run {
                 when (this) {
                     CoroutineState.START -> {
@@ -44,7 +43,7 @@ abstract class BaseActivity<VM : BaseViewModel<R>, R : BaseRepository, VB : View
             }
         })
 
-        viewModel.errorLiveData.observe(this, Observer {
+        viewModel.errorLiveData.observe(this, {
             ToastUtils.showShort(it.message)
         })
     }

@@ -1,5 +1,6 @@
 package com.chenxuan.common.utils.common
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import com.afollestad.materialdialogs.GravityEnum
 import com.afollestad.materialdialogs.MaterialDialog
@@ -8,6 +9,7 @@ import com.afollestad.materialdialogs.MaterialDialog
  * @author cx
  */
 object ProgressDialog {
+    @SuppressLint("StaticFieldLeak")
     private var materialDialog: MaterialDialog? = null
 
     fun showProgress(activity: Activity, msg: String = "请稍候...") {

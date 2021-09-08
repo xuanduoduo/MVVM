@@ -1,14 +1,10 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
-    id 'kotlin-kapt'
 }
 
 def root_android = rootProject.ext.android
 def root_common = rootProject.ext.common
-def root_kapt = rootProject.ext.kapt
-def root_debug = rootProject.ext.debug
-def root_release = rootProject.ext.release
 
 android {
     defaultConfig {
@@ -26,16 +22,7 @@ android {
     }
 }
 
-kapt {
-    arguments {
-        arg("AROUTER_MODULE_NAME", project.getName())
-    }
-}
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    root_common.each { k, v -> api v }
-    root_kapt.each { k, v -> kapt v }
-    root_debug.each { k, v -> debugApi v }
-    root_release.each { k, v -> releaseApi v }
+    implementation root_common.lifecycle
 }
