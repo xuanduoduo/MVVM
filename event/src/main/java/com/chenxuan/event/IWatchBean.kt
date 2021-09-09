@@ -1,3 +1,3 @@
 package com.chenxuan.event
 
-interface WatchBean
+interface IWatchBean
