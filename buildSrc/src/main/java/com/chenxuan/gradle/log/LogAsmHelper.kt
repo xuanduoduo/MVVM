@@ -1,5 +1,6 @@
-package com.chenxuan.gradle
+package com.chenxuan.gradle.log
 
+import com.chenxuan.gradle.AsmHelper
 import org.objectweb.asm.ClassReader
 import org.objectweb.asm.ClassWriter
 import org.objectweb.asm.Opcodes
@@ -7,12 +8,12 @@ import org.objectweb.asm.tree.ClassNode
 import java.io.File
 import java.io.FileWriter
 
-class CustomAsmHelper : AsmHelper {
+class LogAsmHelper : AsmHelper {
 
     private val classNodeMap = hashMapOf<String, ClassNode>()
 
     private val path = System.getProperty("user.home") + File.separator + "Downloads"
-    private val targetFile = File(path + "/inject_" + System.currentTimeMillis() + ".txt")
+    private val targetFile = File(path + "/log_" + System.currentTimeMillis() + ".txt")
 
     override fun modifyClass(srcClass: ByteArray): ByteArray {
         val classNode = ClassNode(Opcodes.ASM5)

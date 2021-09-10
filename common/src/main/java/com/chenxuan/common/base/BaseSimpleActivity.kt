@@ -27,6 +27,7 @@ abstract class BaseSimpleActivity<VB : ViewBinding> : AppCompatActivity() {
         immersionBar {
             transparentStatusBar()
             statusBarDarkFont(true)
+            fitsSystemWindows(true)
             hideBar(BarHide.FLAG_HIDE_NAVIGATION_BAR)
         }
     }

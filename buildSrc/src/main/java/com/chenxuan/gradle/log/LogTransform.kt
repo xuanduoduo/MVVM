@@ -1,17 +1,19 @@
-package com.chenxuan.gradle
+package com.chenxuan.gradle.log
 
 import com.android.build.api.transform.QualifiedContent
 import com.android.build.api.transform.Transform
 import com.android.build.api.transform.TransformException
 import com.android.build.api.transform.TransformInvocation
 import com.android.build.gradle.internal.pipeline.TransformManager
+import com.chenxuan.gradle.BaseTransform
 import com.chenxuan.gradle.ClassUtils.checkClassName
+import com.chenxuan.gradle.TransformCallBack
 import java.io.IOException
 
-class CustomTransform : Transform() {
+class LogTransform : Transform() {
     @Throws(TransformException::class, InterruptedException::class, IOException::class)
     override fun transform(transformInvocation: TransformInvocation) {
-        val asmHelper = CustomAsmHelper()
+        val asmHelper = LogAsmHelper()
         val baseTransform = BaseTransform(transformInvocation, object : TransformCallBack {
             override fun process(className: String, classBytes: ByteArray?): ByteArray? {
                 if (checkClassName(className)) {
@@ -29,7 +31,7 @@ class CustomTransform : Transform() {
     }
 
     override fun getName(): String {
-        return "CustomTransform"
+        return "LogTransform"
     }
 
     override fun getInputTypes(): Set<QualifiedContent.ContentType> {

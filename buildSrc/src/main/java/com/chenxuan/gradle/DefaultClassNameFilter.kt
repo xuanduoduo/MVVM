@@ -4,7 +4,7 @@ class DefaultClassNameFilter : ClassNameFilter {
 
     override fun filter(className: String): Boolean {
         whiteList.forEach {
-            if (className.contains(it)) {
+            if (className.startsWith(it)) {
                 return true
             }
         }
