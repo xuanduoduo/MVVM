@@ -8,6 +8,8 @@ def root_android = rootProject.ext.android
 def root_kapt = rootProject.ext.kapt
 
 android {
+    resourcePrefix "app_"
+
     defaultConfig {
         applicationId root_android.applicationId
         minSdkVersion root_android.minSdkVersion

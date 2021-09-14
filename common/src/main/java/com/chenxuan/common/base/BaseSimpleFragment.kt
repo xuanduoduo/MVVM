@@ -11,17 +11,15 @@ import androidx.viewbinding.ViewBinding
  * @author cx
  */
 abstract class BaseSimpleFragment<VB : ViewBinding> : Fragment() {
-    private var _binding: VB? = null
-
-    protected fun getBinding() = _binding!!
+    protected var binding: VB? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = createViewBinding(inflater, container)
-        return _binding?.root
+        binding = createViewBinding(inflater)
+        return binding?.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -33,7 +31,7 @@ abstract class BaseSimpleFragment<VB : ViewBinding> : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        binding = null
     }
 
     open fun initViewModel() {}
@@ -42,5 +40,5 @@ abstract class BaseSimpleFragment<VB : ViewBinding> : Fragment() {
 
     abstract fun initView(savedInstanceState: Bundle?)
 
-    abstract fun createViewBinding(inflater: LayoutInflater, container: ViewGroup?): VB
+    abstract fun createViewBinding(inflate: LayoutInflater): VB
 }

@@ -20,7 +20,17 @@ class LauncherActivity : BaseSimpleActivity<AppActivityLauncherBinding>() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        binding.tvLauncher.setSingleClick {
+        supportFragmentManager.beginTransaction().apply {
+            replace(
+                R.id.flContainer,
+                LauncherFragment.createInstance(),
+                LauncherFragment.TAG
+            )
+            commitAllowingStateLoss()
+        }
+
+
+        binding.tvBusiness.setSingleClick {
             Router.startActivity(RouterPath.BUSINESS_MAIN)
         }
     }
