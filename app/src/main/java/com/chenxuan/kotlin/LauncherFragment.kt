@@ -3,6 +3,7 @@ package com.chenxuan.kotlin
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import com.bumptech.glide.Glide
 import com.chenxuan.common.base.BaseSimpleFragment
 import com.chenxuan.common.utils.ktx.setSingleClick
 import com.chenxuan.kotlin.databinding.AppFragmentLauncherBinding
@@ -27,5 +28,10 @@ class LauncherFragment : BaseSimpleFragment<AppFragmentLauncherBinding>() {
         binding?.tvLauncher?.setSingleClick {
             Log.d("chenxuan----->", "Launcher")
         }
+
+        Glide
+            .with(this)
+            .load("https://pic.3gbizhi.com/2014/0430/20140430043839656.jpg")
+            .into(binding?.iv!!)
     }
 }
