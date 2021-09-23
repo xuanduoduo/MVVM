@@ -1,4 +1,4 @@
-package com.chenxuan.common.utils.common
+package com.chenxuan.common.utils.dialog
 
 import android.annotation.SuppressLint
 import android.app.Activity

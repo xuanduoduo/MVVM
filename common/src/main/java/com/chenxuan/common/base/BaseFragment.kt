@@ -4,7 +4,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import com.blankj.utilcode.util.ToastUtils
-import com.chenxuan.common.utils.common.ProgressDialog
+import com.chenxuan.common.utils.dialog.ProgressDialog
 import kotlinx.coroutines.launch
 
 /**
