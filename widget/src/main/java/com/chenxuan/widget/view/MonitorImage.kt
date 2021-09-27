@@ -11,6 +11,9 @@ import android.util.AttributeSet
 import android.util.Log
 import android.widget.ImageView
 
+/**
+ * @author cx
+ */
 open class MonitorImage @JvmOverloads constructor(
     context: Context?,
     attributeSet: AttributeSet? = null,

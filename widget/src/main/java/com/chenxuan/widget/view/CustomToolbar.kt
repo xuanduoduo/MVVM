@@ -9,11 +9,13 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.chenxuan.widget.R
-import com.chenxuan.widget.utils.Callback
 
 /**
  * @author cx
  */
+
+internal typealias Callback = () -> Unit
+
 class CustomToolbar @JvmOverloads constructor(
     context: Context,
     attributeSet: AttributeSet? = null,
@@ -31,7 +33,6 @@ class CustomToolbar @JvmOverloads constructor(
     private var iconListener: Callback? = null
 
     init {
-
         val typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.CustomToolbar)
         val content = typedArray.getString(R.styleable.CustomToolbar_barContent)
         val contentColor = typedArray.getColor(

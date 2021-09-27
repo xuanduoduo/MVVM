@@ -6,6 +6,96 @@ import java.util.*
 /**
  * @author cx
  */
+
+/**
+ * 年月日
+ */
+val simpleDateFormat: SimpleDateFormat
+    get() = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+
+/**
+ * day
+ */
+infix fun Int.天(dateFormat: DateFormat): String {
+    return when (dateFormat) {
+        DateFormat.AGO -> {
+            Calendar.getInstance().run {
+                add(Calendar.DAY_OF_YEAR, -this@天)
+                simpleDateFormat.format(timeInMillis)
+            }
+        }
+        DateFormat.AFTER -> {
+            Calendar.getInstance().run {
+                add(Calendar.DAY_OF_YEAR, +this@天)
+                simpleDateFormat.format(timeInMillis)
+            }
+        }
+    }
+}
+
+/**
+ * week
+ */
+infix fun Int.周(dateFormat: DateFormat): String {
+    return when (dateFormat) {
+        DateFormat.AGO -> {
+            Calendar.getInstance().run {
+                add(Calendar.WEEK_OF_YEAR, -this@周)
+                simpleDateFormat.format(timeInMillis)
+            }
+        }
+        DateFormat.AFTER -> {
+            Calendar.getInstance().run {
+                add(Calendar.WEEK_OF_YEAR, +this@周)
+                simpleDateFormat.format(timeInMillis)
+            }
+        }
+    }
+}
+
+/**
+ * month
+ */
+infix fun Int.月(dateFormat: DateFormat): String {
+    return when (dateFormat) {
+        DateFormat.AGO -> {
+            Calendar.getInstance().run {
+                add(Calendar.MONTH, -this@月)
+                simpleDateFormat.format(timeInMillis)
+            }
+        }
+        DateFormat.AFTER -> {
+            Calendar.getInstance().run {
+                add(Calendar.MONTH, +this@月)
+                simpleDateFormat.format(timeInMillis)
+            }
+        }
+    }
+}
+
+/**
+ * year
+ */
+infix fun Int.年(dateFormat: DateFormat): String {
+    return when (dateFormat) {
+        DateFormat.AGO -> {
+            Calendar.getInstance().run {
+                add(Calendar.YEAR, -this@年)
+                simpleDateFormat.format(timeInMillis)
+            }
+        }
+        DateFormat.AFTER -> {
+            Calendar.getInstance().run {
+                add(Calendar.YEAR, +this@年)
+                simpleDateFormat.format(timeInMillis)
+            }
+        }
+    }
+}
+
+/**
+ * 年月日时分秒
+ */
 val sdfDate: SimpleDateFormat
     get() = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
 

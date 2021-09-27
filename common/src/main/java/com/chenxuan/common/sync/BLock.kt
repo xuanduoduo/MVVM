@@ -26,7 +26,6 @@ class BLock {
                 }
             } else if (currentThread === exclusiveOwnerThread) {
                 val next = s + arg
-                if (next < 0) throw Error("Maximum lock count exceeded")
                 state = next
                 return true
             }
