@@ -28,7 +28,7 @@ jobs:
         # 获取git log
       - name: Get Git Log Action
         id: git_log
-        uses: JantHsueh/get-git-log-action@1.0
+        run: git log --pretty=format:"%s" -1
 
         # 发送邮件
       - name: Send email
