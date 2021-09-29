@@ -24,6 +24,13 @@ jobs:
         run: chmod +x gradlew
       - name: Build with Gradle
         run: ./gradlew clean && ./gradlew app:assembleDebug
+        
+        # 获取git log
+      - name: Get git log
+        id: git_log
+        run: |
+        updateLog=`git log --pretty=format:"%s" -1`
+        echo "updateLog=$updateLog" >> $GITHUB_ENV
 
         # 发送邮件
       - name: Send email
@@ -37,4 +44,4 @@ jobs:
           to: zhejian_9534@163.com
           from: chenxuan
           secure: true
-          body: "MVVM master branch update"
+          body: "MVVM master branch has been updated with message $updateLog"
