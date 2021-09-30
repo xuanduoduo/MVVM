@@ -29,7 +29,6 @@ class LauncherActivity : BaseSimpleActivity<AppActivityLauncherBinding>() {
             commitAllowingStateLoss()
         }
 
-
         binding.tvBusiness.setSingleClick {
             Router.startActivity(RouterPath.BUSINESS_MAIN)
         }
