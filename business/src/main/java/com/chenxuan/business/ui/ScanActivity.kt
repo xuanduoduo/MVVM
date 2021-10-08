@@ -3,9 +3,9 @@ package com.chenxuan.business.ui
 import android.os.Bundle
 import android.widget.Toast
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.chenxuan.business.databinding.BusinessScanActivityBinding
 import com.chenxuan.common.base.BaseSimpleActivity
 import com.chenxuan.common.utils.router.RouterPath
-import com.chenxuan.business.databinding.BusinessScanActivityBinding
 import com.google.zxing.client.result.ParsedResultType
 import com.mylhyl.zxing.scanner.ScannerOptions
 
