@@ -1,0 +1,111 @@
+ext {
+    android = [
+            compileSdkVersion: 30,
+            applicationId    : "com.chenxuan.kotlin.mvvm",
+            minSdkVersion    : 21,
+            targetSdkVersion : 30,
+            versionCode      : 1,
+            versionName      : "1.0.0",
+    ]
+
+    versions = [
+            kotlin              : '1.5.20',
+            coroutine           : '1.5.2',
+            androidx_core       : '1.3.2',
+            appcompat           : '1.2.0',
+            lifecycle           : '2.3.1',
+            work_manager        : '2.5.0',
+            room                : '2.2.5',
+            constraintlayout    : '2.0.4',
+            recyclerview        : '1.1.0',
+            material            : '1.3.0',
+            retrofit            : '2.9.0',
+            converter_gson      : '2.9.0',
+            logging_interceptor : '4.9.0',
+            utilcodex           : '1.25.9',
+            arouter             : '1.5.0',
+            arouter_compiler    : '1.5.2',
+            autosize            : '1.1.2',
+            glide               : '4.11.0',
+            glide_compiler      : '4.11.0',
+            material_dialogs    : '0.9.6.0',
+            logger              : '2.2.0',
+            immersionbar        : '3.0.0',
+            recyclerview_adapter: '2.9.30',
+            permissions         : '2.0.3',
+            leakcanary          : '2.4',
+            multidex            : '1.0.3',
+            zxing               : '2.1.6',
+            dokitx              : '3.3.5',
+            mmkv                : '1.2.11',
+    ]
+
+    common = [
+            kotlin               : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin",
+            coroutine            : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutine",
+            androidx_core        : "androidx.core:core-ktx:$versions.androidx_core",
+            appcompat            : "androidx.appcompat:appcompat:$versions.appcompat",
+            viewmodel            : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle",
+            livedata             : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle",
+            lifecycle            : "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycle",
+            constraintlayout     : "androidx.constraintlayout:constraintlayout:$versions.constraintlayout",
+            recyclerview         : "androidx.recyclerview:recyclerview:$versions.recyclerview",
+            material             : "com.google.android.material:material:$versions.material",
+            retrofit             : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+            converter_gson       : "com.squareup.retrofit2:converter-gson:$versions.converter_gson",
+            logging_interceptor  : "com.squareup.okhttp3:logging-interceptor:$versions.logging_interceptor",
+            //https://github.com/Blankj/AndroidUtilCode
+            utilcodex            : "com.blankj:utilcodex:$versions.utilcodex",
+            //https://github.com/alibaba/ARouter/blob/master/README_CN.md
+            arouter              : "com.alibaba:arouter-api:$versions.arouter",
+            //https://github.com/JessYanCoding/AndroidAutoSize
+            autosize             : "me.jessyan:autosize:$versions.autosize",
+            //https://github.com/bumptech/glide
+            glide                : "com.github.bumptech.glide:glide:$versions.glide",
+            //https://github.com/afollestad/material-dialogs
+            material_dialogs     : "com.afollestad.material-dialogs:commons:$versions.material_dialogs",
+            //https://github.com/orhanobut/logger
+            logger               : "com.orhanobut:logger:$versions.logger",
+            //https://github.com/gyf-dev/ImmersionBar
+            immersionbar         : "com.gyf.immersionbar:immersionbar:$versions.immersionbar",
+            immersionbar_fragment: "com.gyf.immersionbar:immersionbar-components:$versions.immersionbar",
+            immersionbar_ktx     : "com.gyf.immersionbar:immersionbar-ktx:$versions.immersionbar",
+            //https://www.jianshu.com/p/b343fcff51b0
+            recyclerview_adapter : "com.github.CymChad:BaseRecyclerViewAdapterHelper:$versions.recyclerview_adapter",
+            //https://github.com/yanzhenjie/AndPermission
+            permissions          : "com.yanzhenjie:permission:$versions.permissions",
+            //65536分包
+            multidex             : "com.android.support:multidex:$versions.multidex",
+            //https://github.com/mylhyl/Android-Zxing
+            zxing                : "com.mylhyl:zxingscanner:$versions.zxing",
+            //https://github.com/Tencent/MMKV/blob/master/README_CN.md
+            mmkv                 : "com.tencent:mmkv:$versions.mmkv"
+    ]
+
+    kapt = [
+            arouter_compiler: "com.alibaba:arouter-compiler:$versions.arouter_compiler",
+            glide_compiler  : "com.github.bumptech.glide:compiler:$versions.glide_compiler",
+    ]
+
+    debug = [
+            //https://github.com/square/leakcanary
+            leakcanary: "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary",
+            //dokit
+            dokitx    : "com.didichuxing.doraemonkit:dokitx:$versions.dokitx",
+    ]
+
+    release = [
+            dokitx_release: "com.didichuxing.doraemonkit:dokitx-no-op:$versions.dokitx",
+    ]
+
+    room = [
+            room         : "androidx.room:room-runtime:$versions.room",
+            room_compiler: "androidx.room:room-compiler:$versions.room",
+            room_ktx     : "androidx.room:room-ktx:$versions.room",
+    ]
+
+    work = [
+            work_manager    : "androidx.work:work-runtime:$versions.work_manager",
+            work_manager_ktx: "androidx.work:work-runtime-ktx:$versions.work_manager",
+    ]
+}

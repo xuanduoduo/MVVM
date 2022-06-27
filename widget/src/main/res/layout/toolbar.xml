@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <ImageView
+        android:id="@+id/toolbarBack"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@null"
+        android:src="@drawable/toolbar_back" />
+
+    <TextView
+        android:id="@+id/toolbarContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:textColor="@color/textBlack"
+        android:textSize="20sp"
+        tools:ignore="RelativeOverlap" />
+
+    <TextView
+        android:id="@+id/toolbarFeature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:textColor="@color/blue_266EFF"
+        android:textSize="18sp"
+        tools:ignore="RelativeOverlap" />
+
+    <ImageView
+        android:id="@+id/toolbarIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@null"
+        android:src="@drawable/toolbar_menu" />
+
+    <View
+        android:id="@+id/toolbarSeparate"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/separate" />
+</RelativeLayout>

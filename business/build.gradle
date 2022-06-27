@@ -1,0 +1,80 @@
+def isModule = rootProject.ext.isBusinessModule
+if (isModule) {
+    apply plugin: 'com.android.library'
+} else {
+    apply plugin: 'com.android.application'
+}
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'maven'
+
+def root_android = rootProject.ext.android
+def root_kapt = rootProject.ext.kapt
+
+android {
+    resourcePrefix "business_"
+
+    defaultConfig {
+        minSdkVersion root_android.minSdkVersion
+        targetSdkVersion root_android.targetSdkVersion
+        compileSdkVersion root_android.compileSdkVersion
+        versionCode root_android.versionCode
+        versionName root_android.versionName
+
+        if (!isModule) {
+            applicationId "com.chenxuan.kotlin.business"
+        }
+    }
+
+    sourceSets {
+        main {
+            if (isModule) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':common')
+    implementation project(path: ':net')
+    implementation project(path: ':widget')
+    kapt root_kapt.arouter_compiler
+}
+
+uploadArchives {
+    configuration = configurations.archives
+    repositories {
+        mavenDeployer {
+            repository(url: 'http://0.0.0.0:8081/repository/maven-releases/') {
+                authentication(userName: 'admin', password: '9250ffbe-19c5-40f5-b8a1-69ed228ad000')
+            }
+            pom.project {
+                version '1.0.0'
+                artifactId 'business'
+                groupId 'com.chenxuan.mvvm'
+                packaging 'aar'
+                description 'update version 1.0.0'
+            }
+        }
+    }
+}

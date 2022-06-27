@@ -1,0 +1,64 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'com.alibaba.arouter'
+}
+
+def root_android = rootProject.ext.android
+def root_kapt = rootProject.ext.kapt
+def biz = rootProject.ext.biz
+def modules = rootProject.ext.modules
+
+android {
+    resourcePrefix "app_"
+
+    defaultConfig {
+        applicationId root_android.applicationId
+        minSdkVersion root_android.minSdkVersion
+        targetSdkVersion root_android.targetSdkVersion
+        compileSdkVersion root_android.compileSdkVersion
+        versionCode root_android.versionCode
+        versionName root_android.versionName
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':common')
+    implementation project(path: ':widget')
+    kapt root_kapt.arouter_compiler
+
+    biz.each { entry ->
+        if (entry.value[0]) {
+            implementation entry.value[1]
+        } else {
+            if (modules.(entry.key)[0]) {
+                implementation modules.(entry.key)[1]
+            }
+        }
+    }
+}

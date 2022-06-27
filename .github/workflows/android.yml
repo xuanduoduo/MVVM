@@ -1,0 +1,46 @@
+name: zjyx
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: set up JDK 1.8
+        uses: actions/setup-java@v2
+        with:
+          java-version: 8.0.302+8
+          distribution: 'adopt'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Build with Gradle
+        run: ./gradlew clean && ./gradlew app:assembleDebug
+        
+        # git log
+      - name: Git log
+        run: |
+             updateLog=`git log --pretty=format:"%s" -1`
+             echo "updateLog=$updateLog" >> $GITHUB_ENV
+
+        # 发送邮件
+      - name: Send email
+        uses: dawidd6/action-send-mail@v3.5.0
+        with:
+          server_address: smtp.qq.com
+          server_port: 465
+          username: ${{ secrets.EMAIL_NAME }}
+          password: ${{ secrets.EMAIL_PWD }}
+          subject: Github Actions
+          to: ${{ secrets.EMAIL_ADDRESS }}
+          from: chenxuan
+          secure: true
+          body: "MVVM master branch has been updated with message:\n${{ env.updateLog }}"

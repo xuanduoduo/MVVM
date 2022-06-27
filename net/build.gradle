@@ -1,0 +1,35 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+def root_android = rootProject.ext.android
+
+android {
+    defaultConfig {
+        minSdkVersion root_android.minSdkVersion
+        targetSdkVersion root_android.targetSdkVersion
+        compileSdkVersion root_android.compileSdkVersion
+        versionCode root_android.versionCode
+        versionName root_android.versionName
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+}
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':base')
+    kapt rootProject.ext.kapt.arouter_compiler
+}

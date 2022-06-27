@@ -1,0 +1,15 @@
+*.iml
+.gradle
+/local.properties
+/.idea/
+/build
+app/build/
+base/build/
+bean/build/
+common/build/
+business/build/
+net/build/
+widget/build/
+room/build/
+work/build/
+buildSrc/build/

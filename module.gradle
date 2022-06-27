@@ -1,0 +1,14 @@
+ext {
+    // source/aar
+    biz = [
+            business: [false, "com.chenxuan.mvvm:business:1.0.0"],
+    ]
+
+    // library/application
+    isBusinessModule = true
+
+    // module
+    modules = [
+            business: [isBusinessModule, project(':business')],
+    ]
+}
