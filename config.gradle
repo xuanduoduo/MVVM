@@ -38,6 +38,7 @@ ext {
             zxing               : '2.1.6',
             dokitx              : '3.3.5',
             mmkv                : '1.2.11',
+            auto_service        : '1.0-rc7',
     ]
 
     common = [
@@ -79,12 +80,14 @@ ext {
             //https://github.com/mylhyl/Android-Zxing
             zxing                : "com.mylhyl:zxingscanner:$versions.zxing",
             //https://github.com/Tencent/MMKV/blob/master/README_CN.md
-            mmkv                 : "com.tencent:mmkv:$versions.mmkv"
+            mmkv                 : "com.tencent:mmkv:$versions.mmkv",
+            auto_service         : "com.google.auto.service:auto-service:$versions.auto_service",
     ]
 
     kapt = [
             arouter_compiler: "com.alibaba:arouter-compiler:$versions.arouter_compiler",
             glide_compiler  : "com.github.bumptech.glide:compiler:$versions.glide_compiler",
+            auto_service    : "com.google.auto.service:auto-service:$versions.auto_service",
     ]
 
     debug = [

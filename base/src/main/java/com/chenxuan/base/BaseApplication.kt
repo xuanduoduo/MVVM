@@ -13,11 +13,11 @@ import com.tencent.mmkv.MMKV
  */
 class BaseApplication : MultiDexApplication() {
     override fun onCreate() {
+        IApp.init(this)
         super.onCreate()
         initARouter()
         Logger.addLogAdapter(AndroidLogAdapter())
         DoraemonKit.install(this)
-        IApp.init(this)
         MMKV.initialize(this)
         initStrictMode()
     }

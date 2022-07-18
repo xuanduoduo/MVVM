@@ -1,6 +1,7 @@
 package com.chenxuan.base
 
 import android.app.Application
+import java.util.*
 
 /**
  * @author cx
@@ -10,8 +11,9 @@ interface IApp {
 
     companion object {
         fun init(application: Application) {
-            AppPath.appPaths.forEach {
-                (Class.forName(it).newInstance() as IApp).onCreate(application)
+            val apps = ServiceLoader.load(IApp::class.java)
+            apps.forEach {
+                it.onCreate(application)
             }
         }
     }

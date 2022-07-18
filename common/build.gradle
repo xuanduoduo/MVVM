@@ -38,4 +38,5 @@ dependencies {
     api project(path: ':bean')
     implementation project(path: ':net')
     kapt rootProject.ext.kapt.arouter_compiler
+    kapt rootProject.ext.kapt.auto_service
 }
