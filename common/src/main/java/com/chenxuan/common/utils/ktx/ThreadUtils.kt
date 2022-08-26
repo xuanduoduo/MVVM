@@ -4,6 +4,7 @@ import android.os.Handler
 import android.os.Looper
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import java.util.concurrent.ScheduledExecutorService
 
 /**
  * @author cx
@@ -14,7 +15,7 @@ private val coreSize = Runtime.getRuntime().availableProcessors() + 1
 private val fix: ExecutorService = Executors.newFixedThreadPool(coreSize)
 private val cache: ExecutorService = Executors.newCachedThreadPool()
 private val single: ExecutorService = Executors.newSingleThreadExecutor()
-private val scheduled: ExecutorService = Executors.newScheduledThreadPool(coreSize)
+private val scheduled: ScheduledExecutorService = Executors.newScheduledThreadPool(coreSize)
 
 fun <T> T.mainThread(delayMillis: Long = 0, block: T.() -> Unit) {
     handler.postDelayed({

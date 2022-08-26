@@ -23,8 +23,8 @@ abstract class BaseSimpleViewModel : ViewModel() {
         MutableLiveData<CoroutineState>()
     }
 
-    val errorLiveData: MutableLiveData<Exception> by lazy {
-        MutableLiveData<Exception>()
+    val errorLiveData: MutableLiveData<Throwable> by lazy {
+        MutableLiveData<Throwable>()
     }
 
     fun <T> request(
@@ -33,22 +33,23 @@ abstract class BaseSimpleViewModel : ViewModel() {
     ): RequestHandler<T> {
         val requestHandler = RequestHandler<T>()
         viewModelScope.launch {
-            try {
+            runCatching {
                 if (refresh) {
                     statusLiveData.value = CoroutineState.REFRESH
                 } else {
                     statusLiveData.value = CoroutineState.START
                 }
-                val result = block()
+                block()
+            }.onSuccess {
                 statusLiveData.value = CoroutineState.FINISH
                 requestHandler.successListener?.invoke(
-                    LaunchResult.Success(result)
+                    LaunchResult.Success(it)
                 )
-            } catch (e: Exception) {
+            }.onFailure {
                 statusLiveData.value = CoroutineState.ERROR
                 if (requestHandler.errorListener == null) {
-                    errorLiveData.value = e
-                } else requestHandler.errorListener?.invoke(LaunchResult.Error(e))
+                    errorLiveData.value = it
+                } else requestHandler.errorListener?.invoke(LaunchResult.Error(it))
             }
         }
         return requestHandler

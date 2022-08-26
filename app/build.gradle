@@ -62,3 +62,44 @@ dependencies {
         }
     }
 }
+
+class AppTaskListener implements TaskExecutionListener, BuildListener {
+    def timeMills = new LinkedHashMap<String, Long>()
+    def lastTimeMill
+
+    @Override
+    void beforeExecute(Task task) {
+        lastTimeMill = System.currentTimeMillis()
+    }
+
+    @Override
+    void afterExecute(Task task, TaskState taskState) {
+        def currentTimeMill = System.currentTimeMillis() - lastTimeMill
+        timeMills.put(task.getPath(), currentTimeMill)
+        task.project.logger.warn "${task.path} build ${currentTimeMill}ms"
+    }
+
+    @Override
+    void buildStarted(Gradle gradle) {}
+
+    @Override
+    void settingsEvaluated(Settings settings) {}
+
+    @Override
+    void projectsLoaded(Gradle gradle) {}
+
+    @Override
+    void projectsEvaluated(Gradle gradle) {}
+
+    @Override
+    void buildFinished(BuildResult result) {
+        println "AppTaskListener: 总共执行了${timeMills.size()}个任务，其中耗时超过100ms的任务有："
+        timeMills.each { entry ->
+            if (entry.value >= 100) {
+                println "${entry.key} build ${entry.value}ms"
+            }
+        }
+    }
+}
+
+gradle.addListener(new AppTaskListener())

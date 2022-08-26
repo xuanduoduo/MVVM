@@ -7,5 +7,5 @@ import com.chenxuan.net.BaseResponse
  */
 sealed class LaunchResult {
     data class Success<T>(val response: BaseResponse<T>) : LaunchResult()
-    data class Error(val error: Exception) : LaunchResult()
+    data class Error(val error: Throwable) : LaunchResult()
 }
